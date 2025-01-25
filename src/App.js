@@ -19,7 +19,7 @@ const App = () => {
   };
 
   useEffect(() => {
-    if (query || page > 1) {
+    if (query || page >= 1) {
       handleSearch();
     }
   }, [query, page]); // Trigger search whenever query or page changes
