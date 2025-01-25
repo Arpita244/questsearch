@@ -64,7 +64,7 @@ const App = () => {
           value={sortOption}
           onChange={(e) => setSortOption(e.target.value)}
         >
-          <option value="">Select Type</option>
+          
           <option value="READ_ALONG">READ_ALONG</option>
           <option value="MCQ">MCQ</option>
           <option value="ANAGRAM">ANAGRAM</option>

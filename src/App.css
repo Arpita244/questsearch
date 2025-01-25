@@ -178,33 +178,55 @@ button:active {
   cursor: not-allowed;
   box-shadow: none;
 }
-/* Sort Dropdown */
+/* Sort Container */
 .sort-container {
-  margin: 20px 0;
+  position: fixed; /* Fixes it to the top-right corner */
+  top: 20px; /* Adjust the distance from the top */
+  right: 20px; /* Adjust the distance from the right */
+  background: linear-gradient(90deg, #ff4d4d, #ff77e9); /* Gradient background similar to search button */
+  padding: 15px 40px; /* Same padding as the search button */
+  border-radius: 30px; /* Rounded corners for the container */
+  box-shadow: 0 8px 20px rgba(255, 119, 233, 0.5); /* Soft shadow similar to search button */
+  display: flex;
+  align-items: center; /* Centers the content vertically */
+  justify-content: center; /* Centers the content horizontally */
+}
+
+/* Light Theme */
+body.light-theme .sort-container select {
+  background-color: #f0f0f0; /* Light background color for light theme */
+  color: #fff; /* White text color inside dropdown */
+}
+
+/* Dark Theme */
+body.dark-theme .sort-container select {
+  background-color: #333; /* Dark background color for dark theme */
+  color: #fff; /* White text color inside dropdown */
 }
 
 .sort-container label {
-  color: #fff;
-  font-size: 16px;
-  margin-right: 10px;
+  color: #fff; /* White text color for label */
+  font-size: 18px; /* Font size for label */
+  margin-right: 10px; /* Space between label and dropdown */
 }
 
 .sort-container select {
-  padding: 10px;
-  border: 2px solid #fff;
-  border-radius: 5px;
-  background-color: #333;
-  color: #fff;
-  font-size: 16px;
-  transition: all 0.3s ease;
+  padding: 15px 30px; /* Padding inside the dropdown */
+  font-size: 18px; /* Font size inside the dropdown */
+  border-radius: 30px; /* Rounded corners for the dropdown */
+  border: none; /* Remove the border */
+  cursor: pointer; /* Cursor as pointer to indicate it's clickable */
+  transition: all 0.3s ease; /* Smooth transition for hover effect */
+}
+
+.sort-container select:hover {
+  background-color: rgba(255, 255, 255, 0.1); /* Slight background change on hover */
 }
 
 .sort-container select:focus {
-  outline: none;
-  border-color: #ff77e9;
-  background-color: #444;
+  outline: none; /* Remove default focus outline */
+  box-shadow: 0 0 15px rgba(255, 119, 233, 0.7); /* Glow effect on focus */
 }
-
 
 /* No Results */
 .no-results {
