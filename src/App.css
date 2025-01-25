@@ -40,7 +40,14 @@ body {
 .search-container {
   display: flex;
   gap: 20px;
-  margin-bottom: 30px;
+  margin-top: 20px; /* Optional: adds space below the top */
+  position: fixed; /* Fixes the search bar at the top of the page */
+  top: 0;
+  left: 0;
+  right: 0;
+  padding: 20px; /* Adds padding around the search bar */
+  z-index: 10; /* Ensures it stays above other elements */
+  background-color: rgba(0, 0, 0, 0.6); /* Optional: Adds a slight background to make it stand out */
 }
 
 input[type="text"] {
@@ -220,12 +227,18 @@ button:active {
   width: 100%;
   border-collapse: collapse;
   table-layout: fixed; /* Ensures equal column widths */
+  max-height: 50vh; /* Set the desired height for the scrollable table */
+  overflow-y: auto; /* Enable vertical scrolling */
+  display: block; /* Required for scroll to work */
 }
 
 .results-table thead {
+  position: sticky;
+  top: 0;
   background: linear-gradient(90deg, #ff4d4d, #ff77e9);
   color: white;
   text-transform: uppercase;
+  z-index: 1;
 }
 
 .results-table th,
