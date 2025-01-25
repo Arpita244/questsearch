@@ -6,6 +6,7 @@ const App = () => {
   const [results, setResults] = useState([]);
   const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(false);
+  const [sortOption, setSortOption] = useState('');
   const handleSearch = async () => {
     setLoading(true); // Set loading to true when fetching data
     try {
@@ -23,6 +24,18 @@ const App = () => {
       handleSearch();
     }
   }, [query, page]); // Trigger search whenever query or page changes
+  
+  useEffect(() => {
+    // Sort the results based on the selected sortOption
+    if (sortOption) {
+      const sortedResults = [...results].sort((a, b) => {
+        if (a.type < b.type) return -1;
+        if (a.type > b.type) return 1;
+        return 0;
+      });
+      setResults(sortedResults);
+    }
+  }, [sortOption]); 
 
   const handleNextPage = () => {
     setPage((prevPage) => prevPage + 1);
@@ -43,6 +56,21 @@ const App = () => {
         onChange={(e) => setQuery(e.target.value)} // Update query on input change
       />
       <button onClick={handleSearch}>Search</button>
+      {/* Sort Dropdown */}
+      <div className="sort-container">
+        <label htmlFor="sortOption">Sort By Type: </label>
+        <select
+          id="sortOption"
+          value={sortOption}
+          onChange={(e) => setSortOption(e.target.value)}
+        >
+          <option value="">Select Type</option>
+          <option value="READ_ALONG">READ_ALONG</option>
+          <option value="MCQ">MCQ</option>
+          <option value="ANAGRAM">ANAGRAM</option>
+        </select>
+      </div>
+
       
       {loading && <p>Loading...</p>}
       <table className="results-table">
