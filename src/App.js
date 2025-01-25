@@ -11,31 +11,21 @@ const App = () => {
     setLoading(true); // Set loading to true when fetching data
     try {
       const response = await axios.get('http://localhost:5000/search', {
-        params: { query, page },
+        params: { query, page, type: sortOption }, // Include sortOption (type) as a query parameter
       });
       setResults(response.data.results);
     } finally {
       setLoading(false); // Set loading to false after the request
     }
   };
+  
 
   useEffect(() => {
-    if (query || page >= 1) {
+    if (query || page >= 1 || sortOption) {
       handleSearch();
     }
-  }, [query, page]); // Trigger search whenever query or page changes
+  }, [query, page, sortOption]); // Trigger search whenever query, page, or sortOption changes
   
-  useEffect(() => {
-    // Sort the results based on the selected sortOption
-    if (sortOption) {
-      const sortedResults = [...results].sort((a, b) => {
-        if (a.type < b.type) return -1;
-        if (a.type > b.type) return 1;
-        return 0;
-      });
-      setResults(sortedResults);
-    }
-  }, [sortOption]); 
 
   const handleNextPage = () => {
     setPage((prevPage) => prevPage + 1);
