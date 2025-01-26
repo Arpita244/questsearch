@@ -39,6 +39,7 @@ const App = () => {
 
   return (
     <div>
+      <div className='con'>
       <div className='search-container'>
       <input
         type="text"
@@ -62,7 +63,7 @@ const App = () => {
           <option value="ANAGRAM">ANAGRAM</option>
         </select>
       </div>
-
+      </div>
       
       {loading && <p>Loading...</p>}
       <table className="results-table">
