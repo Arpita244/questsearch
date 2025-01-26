@@ -1,6 +1,7 @@
 const mon=require('mongoose');
+require('dotenv').config();
 
-mon.connect('mongodb://localhost:27017/speakx')
+mon.connect(process.env.URL)
 .then(()=>console.log('Connected to database'))
 .catch((err)=>console.log('Error:',err));
 
@@ -16,5 +17,5 @@ title:String,
 },{timestamps:true});
 
 
-const Product=mon.model('Product',ProductSchema,'db');
+const Product=mon.model('Product',ProductSchema,'speakx');
 module.exports=Product;
