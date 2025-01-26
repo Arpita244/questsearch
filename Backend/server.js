@@ -9,18 +9,18 @@ app.use(bodyParser.json());
 
 async function db() {
   const result = await Product.find();
-  return result; // Return the result instead of logging it
+  return result; 
 }
 
 app.get('/search', async (req, res) => {
-  console.log('Request received:', req.query); // Log the query params to see if they are being received
-  const { query, page = 1, type } = req.query; // Destructure the type parameter from query
+  console.log('Request received:', req.query); 
+  const { query, page = 1, type } = req.query; 
 
-  // Build the filter object
-  const filter = { title: new RegExp(query, 'i') }; // Default filter for query search
+ 
+  const filter = { title: new RegExp(query, 'i') }; 
 
   if (type) {
-    filter.type = type; // Add filter for type if it is provided
+    filter.type = type; 
   }
 
   try {

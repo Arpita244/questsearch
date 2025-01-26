@@ -8,14 +8,14 @@ const App = () => {
   const [loading, setLoading] = useState(false);
   const [sortOption, setSortOption] = useState('');
   const handleSearch = async () => {
-    setLoading(true); // Set loading to true when fetching data
+    setLoading(true); 
     try {
       const response = await axios.get('http://localhost:5000/search', {
-        params: { query, page, type: sortOption }, // Include sortOption (type) as a query parameter
+        params: { query, page, type: sortOption }, 
       });
       setResults(response.data.results);
     } finally {
-      setLoading(false); // Set loading to false after the request
+      setLoading(false); 
     }
   };
   
@@ -24,7 +24,7 @@ const App = () => {
     if (query || page >= 1 || sortOption) {
       handleSearch();
     }
-  }, [query, page, sortOption]); // Trigger search whenever query, page, or sortOption changes
+  }, [query, page, sortOption]); 
   
 
   const handleNextPage = () => {
@@ -39,14 +39,16 @@ const App = () => {
 
   return (
     <div>
+      <div className='search-container'>
       <input
         type="text"
         placeholder="Search..."
         value={query}
-        onChange={(e) => setQuery(e.target.value)} // Update query on input change
+        onChange={(e) => setQuery(e.target.value)}
       />
       <button onClick={handleSearch}>Search</button>
-      {/* Sort Dropdown */}
+      </div>
+     
       <div className="sort-container">
         <label htmlFor="sortOption">Sort By Type: </label>
         <select
