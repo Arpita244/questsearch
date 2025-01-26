@@ -10,7 +10,7 @@ const App = () => {
   const handleSearch = async () => {
     setLoading(true); 
     try {
-      const response = await axios.get('http://localhost:5000/search', {
+      const response = await axios.get('https://questsearch-63vx.onrender.com/search', {
         params: { query, page, type: sortOption }, 
       });
       setResults(response.data.results);

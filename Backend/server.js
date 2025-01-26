@@ -11,6 +11,9 @@ async function db() {
   const result = await Product.find();
   return result; 
 }
+app.get('/',async(req,res)=>{
+  res.send('server working')
+})
 
 app.get('/search', async (req, res) => {
   console.log('Request received:', req.query); 
