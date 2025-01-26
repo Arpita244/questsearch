@@ -12,7 +12,7 @@ async function db() {
   return result; 
 }
 app.get('/',async(req,res)=>{
-  res.json('server working')
+  res.json("server working")
 })
 
 app.get('/search', async (req, res) => {
