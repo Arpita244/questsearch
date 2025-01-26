@@ -132,11 +132,9 @@ button:active {
   border-radius: 20px;
 }
 
-/* Sort Container */
 .sort-container {
-  margin: 15px 0;
   display: flex;
-  justify-content: space-between;
+  align-items: center;
   gap: 10px;
 }
 
